@@ -37,7 +37,7 @@ const seedImg = async () => {
 const description =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, deserunt soluta? Quisquam deserunt voluptate corporis nemo explicabo ea itaque rem mollitia fuga beatae ex officia qui molestias, atque vel similique?';
 
-const price = Math.floor(Math.random() * 20) + 10;
+let price = Math.floor(Math.random() * 20) + 10;
 
 const seedDB = async () => {
   await Campground.deleteMany({});
