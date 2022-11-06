@@ -1,6 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const Campground = require('../models/campground.js');
+const Reviews = require('../models/review.js');
 const cities = require('./cities.js');
 const axios = require('axios');
 const { descriptors, places } = require('./seedHelpers.js');
@@ -41,11 +42,13 @@ let price = Math.floor(Math.random() * 20) + 10;
 
 const seedDB = async () => {
   await Campground.deleteMany({});
+  await Reviews.deleteMany({});
   console.log('Deleted all old DB entries.');
   console.log('Adding new DB entries, this will take a few seconds.');
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 25; i++) {
     const random1000 = Math.floor(Math.random() * 1000);
     const camp = new Campground({
+      author: '63663aa76b4749b0aaf72834',
       title: `${sample(descriptors)} ${sample(places)}`,
       image: await seedImg(),
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
