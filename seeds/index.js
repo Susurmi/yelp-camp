@@ -45,12 +45,17 @@ const seedDB = async () => {
   await Reviews.deleteMany({});
   console.log('Deleted all old DB entries.');
   console.log('Adding new DB entries, this will take a few seconds.');
-  for (let i = 0; i < 25; i++) {
+  for (let i = 0; i < 20; i++) {
     const random1000 = Math.floor(Math.random() * 1000);
     const camp = new Campground({
       author: '63663aa76b4749b0aaf72834',
       title: `${sample(descriptors)} ${sample(places)}`,
-      image: await seedImg(),
+      images: [
+        {
+          url: 'https://res.cloudinary.com/dbzea2vok/image/upload/v1668891543/YelpCamp/yd44otlpsxib42l8fjyv.png',
+          filename: 'YelpCamp/yd44otlpsxib42l8fjyv',
+        },
+      ],
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       description,
       price,
